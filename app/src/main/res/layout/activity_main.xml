@@ -1,0 +1,332 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <!-- Level TextView -->
+    <TextView
+        android:id="@+id/levelText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Level"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp" />
+
+
+
+    <LinearLayout
+        android:id="@+id/timer_attempts_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/levelText"
+        tools:layout_editor_absoluteX="0dp">
+
+        <!-- Timer Text -->
+        <TextView
+            android:id="@+id/timerText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="9dp"
+            android:text="00:00"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <!-- Play Button -->
+        <Button
+            android:id="@+id/playButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onPlayButtonClick"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/blue"
+            app:iconTint="#FFFFFF"
+            app:icon="@android:drawable/ic_media_play" />
+
+        <!-- Pause Button -->
+        <Button
+            android:id="@+id/pauseButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onPauseButtonClick"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/blue"
+            app:iconTint="#FFFFFF"
+            app:icon="@android:drawable/ic_media_pause" />
+
+        <!-- Restart Button -->
+        <Button
+            android:id="@+id/restartButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/blue"
+            android:textColor="@color/white"
+            app:icon="@android:drawable/ic_media_previous"
+            app:iconTint="#FFFFFF" />
+
+        <!-- Attempts Text -->
+        <TextView
+            android:id="@+id/attemptsText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="Attempts:8/8"
+            android:layout_marginLeft="7dp"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+
+    <GridLayout
+        android:id="@+id/board"
+        android:layout_width="397dp"
+        android:layout_height="395dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/blue"
+        android:columnCount="9"
+        android:rowCount="9"
+        app:layout_constraintBottom_toTopOf="@+id/btn_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.345"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timer_attempts_layout"
+        app:layout_constraintVertical_bias="0.0"/>
+
+    <LinearLayout
+        android:id="@+id/btn_layout"
+        android:layout_width="401dp"
+        android:layout_height="75dp"
+
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <!-- Edit Button -->
+
+        <!-- Check Button -->
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+
+        <Button
+            android:id="@+id/but_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="@color/blue"
+            android:gravity="center"
+            android:onClick="onBackButtonClick"
+            android:text="Back"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            tools:visibility="gone" />
+
+        <Button
+            android:id="@+id/but_check"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawableLeft="@android:drawable/ic_media_play"
+            android:gravity="center"
+            android:onClick="onSolveButtonClick"
+            android:text="Solve"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/blue"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/ShowSolutionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="@color/blue"
+            android:gravity="center"
+            android:onClick="showSolutionButton"
+            android:text="Show"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:visibility="gone" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <!-- LinearLayout for buttons 1 to 5 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/second_buttons"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <!-- Buttons 1 to 5 -->
+        <Button
+            android:id="@+id/button_1"
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="@color/blue"
+            android:onClick="onNumberButtonClick"
+            android:text="1"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+
+        <!-- Adjust the layout_width of the following buttons as per your requirement -->
+        <Button
+            android:id="@+id/button_2"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="@color/blue"
+            android:onClick="onNumberButtonClick"
+            android:text="2"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+
+        <!-- Button 3 -->
+        <Button
+            android:id="@+id/button_3"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="@color/blue"
+            android:onClick="onNumberButtonClick"
+            android:text="3"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+
+        <!-- Button 4 -->
+        <Button
+            android:id="@+id/button_4"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="@color/blue"
+            android:onClick="onNumberButtonClick"
+            android:text="4"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+
+        <!-- Button 5 -->
+        <Button
+            android:id="@+id/button_5"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="@color/blue"
+            android:onClick="onNumberButtonClick"
+            android:text="5"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+    </LinearLayout>
+
+    <!-- LinearLayout for buttons 6 to 9 -->
+    <LinearLayout
+        android:id="@+id/second_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/btn_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <!-- Button 6 -->
+        <Button
+            android:id="@+id/button_6"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="@color/blue"
+            android:onClick="onNumberButtonClick"
+            android:text="6"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+
+        <!-- Button 7 -->
+        <Button
+            android:id="@+id/button_7"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="@color/blue"
+            android:onClick="onNumberButtonClick"
+            android:text="7"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+
+        <!-- Button 8 -->
+        <Button
+            android:id="@+id/button_8"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="@color/blue"
+            android:onClick="onNumberButtonClick"
+            android:text="8"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+
+        <!-- Button 9 -->
+        <Button
+            android:id="@+id/button_9"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="@color/blue"
+            android:onClick="onNumberButtonClick"
+            android:text="9"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+        <Button
+            android:id="@+id/button_clear"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="@color/blue"
+            android:onClick="onClearButtonClick"
+            android:text=""
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

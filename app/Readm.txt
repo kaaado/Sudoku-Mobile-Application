@@ -1,0 +1,133 @@
+1. onCreate(Bundle savedInstanceState)
+   - Purpose: Initializes the activity, sets up the UI, and configures the Sudoku game.
+   - Key Code:
+     - `setContentView(R.layout.activity_main)`
+     - `initializeViews()`
+     - `setButtonListeners()`
+     - `retrieveDifficulty()`
+     - `generateRandomSolution()`
+     - `setupBoard()`
+     - `fillNumbersBasedOnDifficulty(difficulty)`
+     - `attachOnClickListenerToCells()`
+
+2. attachOnClickListenerToCells()
+   - Purpose: Adds listeners to each cell to highlight the row and column when focused.
+   - Key Code:
+     - `editText.setOnFocusChangeListener(new View.OnFocusChangeListener() { ... })`
+
+3. generateRandomSolution()
+   - Purpose: Creates a random valid Sudoku solution.
+   - Key Code:
+     - `solveSudoku(solutionGrid)`
+
+4. solveSudoku(int[][] grid)
+   - Purpose: Uses backtracking to solve the Sudoku puzzle.
+   - Key Code:
+     - `Collections.shuffle(digits)`
+     - `isValidPlacement(grid, row, col, num)`
+     - `solveSudoku(grid)`
+
+5. isValidPlacement(int[][] grid, int row, int col, int num)
+   - Purpose: Ensures a number can be placed in a cell without breaking Sudoku rules.
+   - Key Code:
+     - Checks row, column, and 3x3 subgrid for duplicates.
+
+6. fillNumbersBasedOnDifficulty(String difficulty)
+   - Purpose: Fills the grid based on the selected difficulty level.
+   - Key Code:
+     - `resetGrid()`
+     - Randomly fills cells from the solution grid.
+
+7. resetGrid()
+   - Purpose: Resets the Sudoku grid to all zeros.
+   - Key Code:
+     - Sets each cell in the grid to zero.
+
+8. showSolutionButton(View v)
+   - Purpose: Displays the solution grid when the "Show Solution" button is clicked.
+   - Key Code:
+     - `showSolution()`
+     - Hides other buttons and pauses the timer.
+
+9. onBackButtonClick(View view)
+   - Purpose: Handles the back button click to return to the previous activity.
+
+10. disableTimerButtons()
+    - Purpose: Disables the timer control buttons.
+    - Key Code:
+      - `playButton.setEnabled(false)`
+
+11. showSolution()
+    - Purpose: Displays the solution and disables cell editing.
+    - Key Code:
+      - `updateGridUI(solutionGrid)`
+      - `disableEditing()`
+
+12. disableEditing()
+    - Purpose: Disables editing for all cells.
+    - Key Code:
+      - Loops through and disables all cells.
+
+13. updateGridUI(int[][] grid)
+    - Purpose: Updates the UI to reflect the current grid state.
+    - Key Code:
+      - Sets text of each cell based on the grid array.
+
+14. isValidNumber(String number)
+    - Purpose: Checks if a string is a valid Sudoku number (1-9).
+    - Key Code:
+      - `return number.matches("[1-9]")`
+
+15. onNumberButtonClick(View view)
+    - Purpose: Handles number button clicks, allowing user input in the grid.
+    - Key Code:
+      - `checkGameStatus()`
+      - `updateAttemptsDisplay()`
+
+16. checkGameStatus()
+    - Purpose: Checks if the Sudoku puzzle is solved correctly.
+    - Key Code:
+      - `checkSuccessPercentage()`
+
+17. checkSuccessPercentage()
+    - Purpose: Calculates the percentage of correctly filled cells.
+    - Key Code:
+      - Compares user input with the solution grid.
+
+18. onSolveButtonClick(View view)
+    - Purpose: Allows the user to check progress or show the solution after attempts.
+    - Key Code:
+      - Displays success percentage or solution.
+
+19. showDialog(String title, String message)
+    - Purpose: Shows a dialog with a title and message.
+    - Key Code:
+      - `AlertDialog.Builder builder = new AlertDialog.Builder(this);`
+
+20. onClearButtonClick(View view)
+    - Purpose: Clears the focused cell when the clear button is clicked.
+
+21. startTimer()
+    - Purpose: Starts the game timer.
+    - Key Code:
+      - `handler.post(new Runnable() { ... })`
+
+22. pauseTimer()
+    - Purpose: Pauses the game timer.
+    - Key Code:
+      - `handler.removeCallbacksAndMessages(null)`
+
+23. restartTimer()
+    - Purpose: Restarts the game timer.
+    - Key Code:
+      - `timeElapsedInMillis = 0`
+
+24. updateTimer()
+    - Purpose: Updates the timer display with elapsed time.
+    - Key Code:
+      - Formats and sets the elapsed time to `timerText`.
+
+25. updateAttemptsDisplay()
+    - Purpose: Updates the display of remaining attempts.
+    - Key Code:
+      - Sets the text of `attemptsText` with the current attempts.

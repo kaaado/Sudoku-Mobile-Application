@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    tools:context=".LevelActivity">
+
+    <TextView
+        android:id="@+id/appNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="Game Level"
+        android:textColor="@android:color/white"
+        android:textSize="48sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/easyButton"
+            android:layout_width="269dp"
+            android:layout_height="76dp"
+            android:layout_margin="10dp"
+            android:backgroundTint="@color/blue"
+            android:text="Easy"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            app:cornerRadius="0dp" />
+
+        <Button
+            android:id="@+id/normalButton"
+            android:layout_width="269dp"
+            android:layout_height="76dp"
+            android:layout_margin="10dp"
+            android:text="Normal"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            android:backgroundTint="@color/blue"
+            app:cornerRadius="0dp"/>
+
+        <Button
+            android:id="@+id/hardButton"
+            android:layout_width="269dp"
+            android:layout_height="76dp"
+            android:layout_margin="10dp"
+
+            android:text="Hard"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            android:backgroundTint="@color/blue"
+            app:cornerRadius="0dp"/>
+    </LinearLayout>
+
+</RelativeLayout>
